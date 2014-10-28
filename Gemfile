@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'bourbon'
+gem 'neat'
+
 gem 'passenger'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
