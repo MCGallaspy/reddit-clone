@@ -18,7 +18,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { email: @user.email, password_digest: @user.password_digest, username: @user.username }
+      post :create, user: { email: "gosh@example.com", password: "hahaha", password_confirmation: "hahaha", username: "unique_user" }
     end
 
     assert_redirected_to user_path(assigns(:user))
@@ -35,8 +35,24 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should update user" do
-    patch :update, id: @user, user: { email: @user.email, password_digest: @user.password_digest, username: @user.username }
+    patch :update, id: @user, user: { email: "gosh@example.com", password: "hahaha", password_confirmation: "hahaha" }
     assert_redirected_to user_path(assigns(:user))
+  end
+  
+  test "username should not be updatable" do
+    patch :update, id: @user, user: { username: "blargle" }
+    assert_redirected_to edit_user_path(@user)
+  end
+  
+  test "invalid update data should redirect to user_edit_path" do
+    patch :update, id: @user, user: { email: "bad@email" }
+    assert_redirected_to edit_user_path(@user), message: "Invalid email was accepted for user update"
+    
+    patch :update, id: @user, user: { password: "a"*5 }
+    assert_redirected_to edit_user_path(@user), message: "Invalid password accepted for user update"
+    
+    patch :update, id: @user, user: { password: "a"*6, password_confirmation: "b"*6 }
+    assert_redirected_to edit_user_path(@user), message: "Password and password_confirmation should match for user update"
   end
 
   test "should destroy user" do
