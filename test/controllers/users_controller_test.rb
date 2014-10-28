@@ -39,20 +39,20 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to user_path(assigns(:user))
   end
   
-  test "username should not be updatable" do
+  test "username should not be updatable, should render edit action" do
     patch :update, id: @user, user: { username: "blargle" }
-    assert_redirected_to edit_user_path(@user)
+    assert_template :edit
   end
   
-  test "invalid update data should redirect to user_edit_path" do
+  test "invalid update data should render edit action" do
     patch :update, id: @user, user: { email: "bad@email" }
-    assert_redirected_to edit_user_path(@user), message: "Invalid email was accepted for user update"
+    assert_template :edit
     
     patch :update, id: @user, user: { password: "a"*5 }
-    assert_redirected_to edit_user_path(@user), message: "Invalid password accepted for user update"
+    assert_template :edit
     
     patch :update, id: @user, user: { password: "a"*6, password_confirmation: "b"*6 }
-    assert_redirected_to edit_user_path(@user), message: "Password and password_confirmation should match for user update"
+    assert_template :edit
   end
 
   test "should destroy user" do
