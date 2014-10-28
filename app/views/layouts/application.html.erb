@@ -8,7 +8,39 @@
 </head>
 <body>
 
-<%= yield %>
+  <div class="container">
+    <div class="row" id="navbar-row">
+      <div class="navbar">
+        <p>Navbar goes here</p>
+      </div>
+    </div>
+
+    <div class="row" id="header-row">
+      <div class="header-image">
+        <p>Header image</p>
+      </div>
+      
+      <div class="subreddit-nav">
+        <p>subreddit nav</p>
+      </div>
+
+      <div class="user-nav">
+        <p>user nav</p>
+      </div>
+    </div>
+
+    <div class="row" id="content-row">
+      <div class="posts">
+        <p>The content</p>
+        <%= yield %>
+      </div>
+
+      <div class="sidebar">
+        <p>The sidebar</p>
+      </div>
+    </div>
+
+  </div>
 
 </body>
 </html>

@@ -13,5 +13,56 @@
  *= require_self
  */
 @import "bourbon";
-@import "base/base";
+@import "base/grid-settings";
 @import "neat";
+@import "base/base";
+@import "mixins";
+
+div.container {
+  @include outer-container;
+}
+
+.row {
+  @include row();
+  @include span-columns(12);
+  @include dev-border;
+}
+
+.navbar {
+  height: 18px;
+}
+
+#header-row {
+  height: 45px;
+  background-color: #D6EAFF;
+}
+
+.header-image {
+  @include span-columns(1 of 12);
+  @include dev-border;
+  height: 45px;
+}
+
+.subreddit-nav {
+  @include span-columns(3 of 12);
+  float: left;
+  @include dev-border;
+  @include header-menu-pos;
+}
+
+.user-nav {
+  @include span-columns(2 of 12);
+  float: right;
+  @include dev-border;
+  @include header-menu-pos;
+}
+
+.posts {
+  @include span-columns(9 of 12);
+  @include dev-border;
+}
+
+.sidebar {
+  @include span-columns(3 of 12);
+  @include dev-border;
+}

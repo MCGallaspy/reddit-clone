@@ -1,0 +1,14 @@
+@mixin dev-border {
+  border: solid 1px black;
+}
+
+@mixin header-menu-pos {
+  height: 18px;
+  margin-top: 27px;
+  margin-bottom: 0;
+  p {
+    font-size: small;
+    margin: 0;
+    padding: 0;
+  }
+}
