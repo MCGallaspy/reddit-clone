@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   before_save { self.email.downcase! }
 
+  has_many :posts, inverse_of: :user
+  has_many :comments, inverse_of: :user
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)

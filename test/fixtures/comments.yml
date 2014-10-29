@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  upvotes: 1
+  downvotes: 1
+  parent_id: 
+  parent_type: Parent
+  user_id: 
+  content: MyText
+
+two:
+  upvotes: 1
+  downvotes: 1
+  parent_id: 
+  parent_type: Parent
+  user_id: 
+  content: MyText

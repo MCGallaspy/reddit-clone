@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028045250) do
+ActiveRecord::Schema.define(version: 20141029004949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: true do |t|
+    t.integer  "upvotes"
+    t.integer  "downvotes"
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["parent_id", "parent_type"], name: "index_comments_on_parent_id_and_parent_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.integer  "upvotes"
+    t.integer  "downvotes"
+    t.string   "title"
+    t.integer  "user_id"
+    t.text     "self_text"
+    t.string   "link"
+    t.boolean  "is_self_post"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"
