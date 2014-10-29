@@ -10,8 +10,20 @@ class User < ActiveRecord::Base
   has_many :posts, inverse_of: :user
   has_many :comments, inverse_of: :user
 
+  before_destroy :clear_associates
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+
+  private
+
+    # The associated objects should be reloaded into memory
+    # It's not possible to reload them from this function...
+    # Can't figure out why.
+    def clear_associates
+      self.posts.clear
+      self.comments.clear
+    end
 end
