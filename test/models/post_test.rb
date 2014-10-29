@@ -23,7 +23,7 @@ class PostTest < ActiveSupport::TestCase
 
   test "post user may be nil if user is destroyed" do
     @link_post.user.destroy
-    assert @link_post.user.nil?, "Post user not nil after user is destroyed"
+    assert @link_post.user.nil?, "Post user not nil after user is #{@link_post.user.inspect}"
   end
 
   test "self_text should be nil if not is_self_post" do
