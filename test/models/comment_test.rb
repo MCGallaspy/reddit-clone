@@ -25,7 +25,9 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "comment user should be nil if user is destroyed" do
-    @user.destroy
+    @comment.user.destroy
+    # user callback sets comment.user to nil, but comment needs to be reloaded from the db
+    @comment.reload
     assert @comment.user.nil?, "comment user isn't nil, it's: #{@comment.user.inspect}"
   end
 

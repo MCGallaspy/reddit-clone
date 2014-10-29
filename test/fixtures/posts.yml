@@ -5,7 +5,7 @@ link_post:
   downvotes: 1
   title: MyString
   user: mike
-  self_text: nil
+  self_text: NULL
   link: http://google.com
   is_self_post: false
 
@@ -15,7 +15,7 @@ self_post:
   title: MyString
   user: mike
   self_text: "A fanciful self post"
-  link: nil
+  link: NULL
   is_self_post: true
 
 two:
@@ -24,5 +24,5 @@ two:
   title: MyString
   user: ricky
   self_text: MyText
-  link: nil
+  link: NULL
   is_self_post: true
