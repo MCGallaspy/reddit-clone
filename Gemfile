@@ -4,6 +4,8 @@ gem 'bourbon'
 gem 'bitters'
 gem 'neat'
 
+gem 'rails_12factor'
+
 gem 'passenger'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
