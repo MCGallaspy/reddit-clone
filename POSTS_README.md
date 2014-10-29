@@ -26,3 +26,4 @@ also has a parent comment or post.
 * downvotes
 * parent (comment or post)
 * children (comments)
+* user
