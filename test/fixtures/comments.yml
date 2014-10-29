@@ -3,15 +3,23 @@
 one:
   upvotes: 1
   downvotes: 1
-  parent_id: 
-  parent_type: Parent
-  user_id: 
+  parent: link_post
+  parent_type: Post
+  user: mike
+  content: MyText
+
+named_comment:
+  upvotes: 1
+  downvotes: 1
+  parent: self_post 
+  parent_type: Post
+  user: mike 
   content: MyText
 
 two:
   upvotes: 1
   downvotes: 1
-  parent_id: 
-  parent_type: Parent
-  user_id: 
+  parent: named_comment
+  parent_type: Comment
+  user: ricky 
   content: MyText

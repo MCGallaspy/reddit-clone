@@ -1,19 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+link_post:
   upvotes: 1
   downvotes: 1
   title: MyString
-  user_id: 
-  self_text: MyText
-  link: MyString
+  user: mike
+  self_text: nil
+  link: http://google.com
   is_self_post: false
+
+self_post:
+  upvotes: 4
+  downvotes: 10
+  title: MyString
+  user: mike
+  self_text: "A fanciful self post"
+  link: nil
+  is_self_post: true
 
 two:
   upvotes: 1
   downvotes: 1
   title: MyString
-  user_id: 
+  user: ricky
   self_text: MyText
-  link: MyString
-  is_self_post: false
+  link: nil
+  is_self_post: true
