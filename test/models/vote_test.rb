@@ -15,7 +15,7 @@ class VoteTest < ActiveSupport::TestCase
     vote = Vote.create(user: @user, votable: @post)
     @user.destroy
     vote.reload
-    assert vote.user == nil, "vote.user should be nil if user is deleted. It was: #{vote.user.inspect}"
+    assert vote.user.nil?, "vote.user should be nil if user is deleted. It was: #{vote.user.inspect}"
   end
 
   test "vote user and votable should be unique on creation" do
