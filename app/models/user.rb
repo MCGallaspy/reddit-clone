@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   has_many :posts, inverse_of: :user
   has_many :comments, inverse_of: :user
 
+  has_many :votes
+  has_many :voted_posts, through: :votes, foreign_key: "user_id", class_name: "Post",
+           source_type: "Post", source: :votable
+  has_many :voted_comments, through: :votes, foreign_key: "user_id", class_name: "Comment",
+           source_type: "Comment", source: :votable
+
   before_destroy :clear_associates
 
   def User.digest(string)
