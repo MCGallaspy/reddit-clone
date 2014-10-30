@@ -1,0 +1,15 @@
+<dev id="login-form-container">
+  <%= form_for :session, url: login_path do |f| %>
+    <div class="form-element">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+  
+    <div class="form-element">
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+    </div>
+
+    <%= f.submit "Log in", class: "button" %>
+  <% end %>
+</dev>

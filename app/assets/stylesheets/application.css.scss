@@ -66,3 +66,16 @@ div.container {
   @include span-columns(3 of 12);
   @include dev-border;
 }
+
+#login-form-container {
+  .form-element {
+    width: 48%;
+    padding: 0;
+    margin: 0 1%;
+    float: left;
+  }
+
+  .button {
+    float: right;
+  }
+}
