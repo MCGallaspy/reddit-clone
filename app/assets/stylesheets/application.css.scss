@@ -18,6 +18,12 @@
 @import "base/base";
 @import "mixins";
 
+$flash-red: #FBE3E4;
+
+body {
+  margin: 0;
+}
+
 div.container {
   @include outer-container;
 }
@@ -65,17 +71,35 @@ div.container {
 .sidebar {
   @include span-columns(3 of 12);
   @include dev-border;
+  padding-right: 4px;
 }
 
 #login-form-container {
   .form-element {
-    width: 48%;
+    width: 47.5%;
     padding: 0;
     margin: 0 1%;
-    float: left;
+    display: inline-block;
   }
 
   .button {
     float: right;
+  }
+}
+
+.error {
+  display: block;
+  font-weight: bold;
+  margin-bottom: $base-spacing / 2;
+  padding: $base-spacing / 2;
+  color: darken($flash-red, 60);
+}
+
+.user-nav {
+  .nav-item {
+    font-size: 10pt;
+    vertical-align: super;
+    float: right;
+    padding-right: 4px;
   }
 }

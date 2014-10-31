@@ -1,1 +1,3 @@
-<%= render 'sessions/new' %>
+<% unless logged_in? %>
+  <%= render 'sessions/new' %>
+<% end %>
