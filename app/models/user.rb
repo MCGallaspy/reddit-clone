@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 
   before_destroy :clear_associates
 
+  def to_param
+    username
+  end
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)

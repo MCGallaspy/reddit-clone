@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   root    'application#index'
   post    'login'             => 'sessions#create'
   delete  'logout'            => 'sessions#destroy'
+  get     'user/:id'          => 'users#show',        as: 'user'
   
   resources :comments
   resources :posts
+ 
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

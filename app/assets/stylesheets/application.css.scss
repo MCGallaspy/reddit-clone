@@ -61,6 +61,8 @@ div.container {
   float: right;
   @include dev-border;
   @include header-menu-pos;
+  border-top-left-radius: 10px;
+  background: #E9FFFF;
 }
 
 .posts {
