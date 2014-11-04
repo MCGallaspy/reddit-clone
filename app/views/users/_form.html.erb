@@ -12,25 +12,29 @@
   <% end %>
 
 
-  <% if current_page? action: :new, controller: :users %>
-    <div class="field">
-    <%= f.label :username %><br>
+  <div class="field">
+    <%= f.label :username %>
     <%= f.text_field :username %>
-    </div>
-  <% end %>
+  </div>
 
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br>
+    <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br>
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
+
+  <%= label_tag :remember_me do %>
+    <%= check_box_tag :remember_me %>
+    <span>remember me</span>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

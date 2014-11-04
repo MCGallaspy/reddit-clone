@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    render layout: "layouts/no_sidebar"
   end
 
   # GET /users/1/edit
@@ -28,10 +29,11 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        params[:user][:remember_me] == '1' ? remember(@user) : forget(@user)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new }
+        format.html { render :new, layout: 'layouts/no_sidebar' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

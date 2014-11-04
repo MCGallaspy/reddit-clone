@@ -65,6 +65,10 @@ div.container {
   background: #E9FFFF;
 }
 
+#content-row {
+  margin-top: 5px;
+}
+
 .posts {
   @include span-columns(9 of 12);
   @include dev-border;
@@ -76,7 +80,18 @@ div.container {
   padding-right: 4px;
 }
 
-#login-form-container {
+.signup-container {
+  @include span-columns(7 of 12);
+  border-right: solid 2px black;
+  @include login-page-margins;
+}
+
+.login-container {
+  @include span-columns(5 of 12);
+  @include login-page-margins;
+}
+
+#login-form-sidebar-container {
   .form-element {
     width: 47.5%;
     padding: 0;

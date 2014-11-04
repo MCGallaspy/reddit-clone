@@ -1,3 +1,5 @@
 <% unless logged_in? %>
-  <%= render 'sessions/new' %>
+  <div id="login-form-sidebar-container">
+    <%= render 'sessions/new' %>
+  </div>
 <% end %>

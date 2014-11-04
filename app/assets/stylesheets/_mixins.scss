@@ -2,6 +2,10 @@
 //  border: solid 1px black;
 }
 
+@mixin login-page-margins {
+  padding: 0px 20px;
+}
+
 @mixin header-menu-pos {
   height: 18px;
   margin-top: 27px;

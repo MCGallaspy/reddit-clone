@@ -1,24 +1,22 @@
-<dev id="login-form-container">
-  <%= form_for :session, url: login_path do |f| %>
-    <div class="form-element">
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-    </div>
-  
-    <div class="form-element">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
+<%= form_for :session, url: login_path do |f| %>
+  <div class="form-element">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
 
-    <%= f.label :remember_me do %>
-      <%= f.check_box :remember_me %>
-      <span>remember me</span>
-    <% end %>
-     
-    <% unless flash[:login_error].blank? %>
-      <div class="error"><span><%= flash[:login_error] %></span></div>
-    <% end %>
+  <div class="form-element">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
 
-    <%= f.submit "Log in", class: "button" %>
+  <%= f.label :remember_me do %>
+    <%= f.check_box :remember_me %>
+    <span>remember me</span>
   <% end %>
-</dev>
+     
+  <% unless flash[:login_error].blank? %>
+    <div class="error"><span><%= flash[:login_error] %></span></div>
+  <% end %>
+
+  <%= f.submit "Log in", class: "button" %>
+<% end %>

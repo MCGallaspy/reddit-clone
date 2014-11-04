@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RedditClone</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row" id="navbar-row">
+      <div class="navbar">
+        <p>Navbar goes here</p>
+      </div>
+    </div>
+
+    <div class="row" id="header-row">
+      <div class="header-image">
+        <p>Header image</p>
+      </div>
+      
+      <div class="subreddit-nav">
+        <p>subreddit nav</p>
+      </div>
+
+      <div class="user-nav">
+        <%= render 'layouts/user_nav' %>
+      </div>
+    </div>
+
+    <div class="row" id="content-row">
+      <%= yield %>
+    </div>
+
+  </div>
+
+</body>
+</html>
