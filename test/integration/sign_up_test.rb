@@ -9,8 +9,8 @@ class SignUpTest < ActionDispatch::IntegrationTest
       post_via_redirect users_path, user: { username: "newguy",
                                             email: nil,
                                             password: "heyopassword",
-                                            password_confirmation: "heyopassword",
-                                            remember_me: "1" }
+                                            password_confirmation: "heyopassword" },
+                                    remember_me: "1"
     end
     assert is_logged_in?
     assert_not_nil cookies["remember_token"]
@@ -24,8 +24,8 @@ class SignUpTest < ActionDispatch::IntegrationTest
       post_via_redirect users_path, user: { username: "newguy",
                                             email: nil,
                                             password: "heyopassword",
-                                            password_confirmation: "heyopassword",
-                                            remember_me: "0" }
+                                            password_confirmation: "heyopassword" },
+                                    remember_me: "0"
     end
     assert is_logged_in?
     assert_nil cookies["remember_token"]
