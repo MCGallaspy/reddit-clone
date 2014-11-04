@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates :email, format: { with: VALID_EMAIL_REGEX }, allow_blank: true
   validates :password, length: { minimum: 6 }, allow_blank: true
 
-  before_save { self.email.downcase! }
+  before_save { self.email.downcase! unless self.email.nil? }
 
   has_many :posts, inverse_of: :user
   has_many :comments, inverse_of: :user
