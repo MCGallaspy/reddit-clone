@@ -44,13 +44,6 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test "email must be unique and case insensitive" do
-    userdup = @user.dup
-    userdup.email.upcase!
-    userdup.username = "heyyo"
-    assert_not userdup.valid?, "Email should be unique and case insensitive"
-  end
-
   test "password should have a minimum length of 6" do
     @user.password = @user.password_confirmation = "12345"
     assert_not @user.valid?, "Password must have a minimum length of 6"
