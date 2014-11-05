@@ -29,6 +29,14 @@
       </div>
     </div>
 
+    <% unless flash.empty? %>
+      <div class="row" id="flash-row">
+        <% flash.each do |message_type, message| %>
+          <span class="<%= message_type %>"><%= message %></span>
+        <% end %>
+      </div>
+    <% end %>
+
     <div class="row" id="content-row">
       <%= yield %>
     </div>

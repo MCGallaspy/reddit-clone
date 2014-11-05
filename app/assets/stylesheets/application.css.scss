@@ -19,6 +19,7 @@
 @import "mixins";
 
 $flash-red: #FBE3E4;
+$flash-green: #E6EFC2;
 
 body {
   margin: 0;
@@ -91,6 +92,17 @@ div.container {
   @include login-page-margins;
 }
 
+.edit-user-container {
+  @include span-columns(7 of 12);
+  border-right: solid 2px black;
+  @include login-page-margins;
+}
+
+.delete-user-container {
+  @include span-columns(5 of 12);
+  @include login-page-margins;
+}
+
 #login-form-sidebar-container {
   .form-element {
     width: 47.5%;
@@ -112,7 +124,17 @@ div.container {
   color: darken($flash-red, 60);
 }
 
+.success {
+  display: block;
+  font-weight: bold;
+  margin-bottom: $base-spacing / 2;
+  padding: $base-spacing / 2;
+  color: darken($flash-green, 60);
+}
+
 .user-nav {
+  width: auto;
+  padding-left: 5px;
   .nav-item {
     font-size: 10pt;
     vertical-align: super;

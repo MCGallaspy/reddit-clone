@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   root    'application#index'
   post    'login'             => 'sessions#create'
   delete  'logout'            => 'sessions#destroy'
-  get     'user/:id'          => 'users#show',        as: 'user'
+  get     'login'             => 'users#new',         as: 'new_user'
   
   resources :comments
   resources :posts
  
-  resources :users
+  resources :users, except: [:new, :index], path: :user
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,51 +1,52 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-  end
+  # No reason for this action
+  #def index
+  #  @users = User.all
+  #end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
   end
 
-  # GET /users/new
   def new
     @user = User.new
+    @update_account = false
     render layout: "layouts/no_sidebar"
   end
 
-  # GET /users/1/edit
   def edit
+    @update_account = true
+    render layout: "layouts/no_sidebar"
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         log_in @user
         params[:remember_me] == '1' ? remember(@user) : forget(@user)
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html do
+          redirect_to root_path
+          flash[:success] = 'User was successfully created.'
+        end
         format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new, layout: 'layouts/no_sidebar' }
+        format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if not update_user_params.empty? and @user.update(update_user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html do
+          redirect_to edit_user_path(@user)
+          flash[:success] = 'User was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -54,13 +55,24 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    if @user.authenticate(params[:user][:password])
+      @user.destroy
+      respond_to do |format|
+        format.html do
+          redirect_to login_path
+          flash[:success] = 'User was successfully destroyed.'
+        end
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html do
+          redirect_to edit_user_path(@user)
+          flash[:error] = 'User was not destroyed.'
+        end
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -78,5 +90,9 @@ class UsersController < ApplicationController
     # Username should not be updatable
     def update_user_params
       params.require(:user).permit(:email, :password, :password_confirmation)
+    end
+
+    def correct_user
+      redirect_to root_path unless @user == current_user
     end
 end
