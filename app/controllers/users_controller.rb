@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  layout 'layouts/no_sidebar'
 
   # No reason for this action
   #def index
@@ -14,12 +15,10 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @update_account = false
-    render layout: "layouts/no_sidebar"
   end
 
   def edit
     @update_account = true
-    render layout: "layouts/no_sidebar"
   end
 
   def create
@@ -49,7 +48,10 @@ class UsersController < ApplicationController
         end
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+        format.html do
+          @update_account = true
+          render :edit
+        end
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -60,16 +62,16 @@ class UsersController < ApplicationController
       @user.destroy
       respond_to do |format|
         format.html do
-          redirect_to login_path
           flash[:success] = 'User was successfully destroyed.'
+          redirect_to login_path
         end
         format.json { head :no_content }
       end
     else
       respond_to do |format|
         format.html do
+          flash['delete-form'] = 'User was not destroyed.'
           redirect_to edit_user_path(@user)
-          flash[:error] = 'User was not destroyed.'
         end
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end

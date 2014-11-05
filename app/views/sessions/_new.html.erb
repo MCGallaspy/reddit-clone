@@ -13,10 +13,10 @@
     <%= f.check_box :remember_me %>
     <span>remember me</span>
   <% end %>
-     
-  <% unless flash[:login_error].blank? %>
-    <div class="error"><span><%= flash[:login_error] %></span></div>
-  <% end %>
+
+  <%= show_error('login_error') %>
 
   <%= f.submit "Log in", class: "button" %>
+
+  <%= hidden_field_tag(:rendered_by, controller_name) %>
 <% end %>

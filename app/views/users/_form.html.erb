@@ -1,11 +1,11 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <div class="error"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</div>
 
       <ul>
       <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li class="error"><%= message %></li>
       <% end %>
       </ul>
     </div>
@@ -19,7 +19,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :email %>
+    <%= f.label :email do %>
+      <span>Email (optional)</span>
+    <% end %>
     <%= f.text_field :email %>
   </div>
   <div class="field">

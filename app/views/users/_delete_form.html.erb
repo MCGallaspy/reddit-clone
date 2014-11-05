@@ -1,5 +1,7 @@
 <%= form_for @user, url: user_path(@user), method: :delete do |f| %>
-  
+
+  <%= show_error('delete-form') %>
+
   <div class="field">
     <%= f.label :password %>
     <span>enter password for confirmation</span>
