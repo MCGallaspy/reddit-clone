@@ -1,5 +1,4 @@
 * Require sensible permissions for various controller actions
-* Make sign-up form
 * Add new post and new comment forms
 * Implement other actions for posts and comments where it makes sense
   i.e. delete, edit
