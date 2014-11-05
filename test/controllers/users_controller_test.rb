@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
+    log_in_as @user
   end
 
   test "should get new" do
@@ -15,7 +16,7 @@ class UsersControllerTest < ActionController::TestCase
       post :create, user: { email: "gosh@example.com", password: "hahaha", password_confirmation: "hahaha", username: "unique_user" }
     end
 
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to root_path
   end
 
   test "should show user" do
@@ -30,7 +31,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should update user" do
     patch :update, id: @user, user: { email: "gosh@example.com", password: "hahaha", password_confirmation: "hahaha" }
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to edit_user_path(assigns(:user))
   end
   
   test "username should not be updatable, should render edit action" do
@@ -51,9 +52,9 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
-      delete :destroy, id: @user
+      delete :destroy, id: @user, user: { username: @user.username, password: "blah" }
     end
 
-    assert_redirected_to users_path
+    assert_redirected_to login_path
   end
 end

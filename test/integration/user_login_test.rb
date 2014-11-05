@@ -9,7 +9,8 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     get root_path
     assert_template 'layouts/application'
     post login_path, session: { username: "    ", password: " " }
-    assert_template 'layouts/application'
+    assert_redirected_to root_path
+    follow_redirect!
     assert_not flash.empty?, "Invalid credentials should give error"
     get root_path
     assert flash.empty?
