@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   def index
-    render text: "", layout: 'layouts/application'
+    render text: "Howdy ho", layout: 'layouts/application'
   end
 
   private

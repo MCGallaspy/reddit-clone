@@ -1,0 +1,15 @@
+<h2>new self post</h2>
+<%= form_for @post, html: { id: 'self_post_form' } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :self_text %>
+  <%= f.text_area :self_text %>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :is_self_post, value: :true %>
+  <%= f.hidden_field :link, value: nil %>
+
+  <%= f.submit "create post" %>
+
+<% end %>

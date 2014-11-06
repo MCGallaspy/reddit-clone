@@ -2,4 +2,13 @@
   <div id="login-form-sidebar-container">
     <%= render 'sessions/new' %>
   </div>
+<% else %>
+  <%= form_tag new_post_path, method: :get, class: :new_post_button do %>
+    <%= hidden_field_tag :post_type, :self_post %>
+    <%= submit_tag "new self post" %>
+  <% end %>
+  <%= form_tag new_post_path, method: :get, class: :new_post_button do %>
+    <%= hidden_field_tag :post_type, :link_post %>
+    <%= submit_tag "new link post" %>
+  <% end %>
 <% end %>

@@ -79,6 +79,13 @@ div.container {
   @include span-columns(3 of 12);
   @include dev-border;
   padding-right: 4px;
+  .new_post_button {
+    display: block;
+    margin: 1px 20px;
+    input {
+      width: 100%;
+    }
+  }
 }
 
 .signup-container {
@@ -100,6 +107,11 @@ div.container {
 
 .delete-user-container {
   @include span-columns(5 of 12);
+  @include login-page-margins;
+}
+
+.new-post-container {
+  @include span-columns(6 of 12);
   @include login-page-margins;
 }
 

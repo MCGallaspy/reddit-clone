@@ -1,0 +1,15 @@
+<h2>new link post</h2>
+<%= form_for @post, html: { id: "link_post_form" } do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :link %>
+  <%= f.url_field :link %>
+
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :is_self_post, value: :false %>
+  <%= f.hidden_field :self_text, value: nil %>
+
+  <%= f.submit "create post" %>
+
+<% end %>
