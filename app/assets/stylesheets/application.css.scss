@@ -70,7 +70,7 @@ div.container {
   margin-top: 5px;
 }
 
-.posts {
+.content {
   @include span-columns(9 of 12);
   @include dev-border;
 }
@@ -152,5 +152,69 @@ div.container {
     vertical-align: super;
     float: right;
     padding-right: 4px;
+  }
+}
+
+.post {
+  height: 50px;
+
+  span, div {
+    float: left;
+    display: block;
+  }
+
+  .rank {
+    font-size: medium;
+    font-family: arial;
+    text-align: right;
+    color: #C6C6C6;
+    width: 2.2ex;
+    margin-top: 15px;
+  }
+
+  .voted-on {
+    width: 5.1ex;
+    font-weight: bold;
+    font-size: small;
+    margin: 0px 7px;
+    div {
+      display: block;
+      margin: auto;
+      float: none;
+    }
+    .upvote-button, .downvote-button {
+      height: 14px;
+      width: 15px;
+      text-align: center;
+    }
+    .votes {
+      height: 16px;
+      text-align: center;
+    }
+  }
+
+  .thumbnail {
+    width: 70px;
+  }
+
+  .entry {
+    .title {
+      height: 19px;
+      margin: 0px;
+    }
+    .tagline {
+      height: 12px;
+      font-size: x-small;
+      color: #888;
+      margin: 0px;
+    }
+    .buttons {
+      margin: 0px;
+      list-style: none;
+      li {
+        font-size: x-small;
+        color: #888;
+      }
+    }
   }
 }

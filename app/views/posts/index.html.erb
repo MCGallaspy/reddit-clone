@@ -1,37 +1,26 @@
-<h1>Listing posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-      <th>Title</th>
-      <th>User</th>
-      <th>Self text</th>
-      <th>Link</th>
-      <th>Is self post</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.upvotes %></td>
-        <td><%= post.downvotes %></td>
-        <td><%= post.title %></td>
-        <td><%= post.user %></td>
-        <td><%= post.self_text %></td>
-        <td><%= post.link %></td>
-        <td><%= post.is_self_post %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<div class="posts">
+  <% @posts.each_with_index do |post, index| %>
+  <div class="post">
+    <span class="rank"><%= index+1 %></span>
+    <div class="voted-on">
+      <div class="upvote-button">/\</div>
+      <div class="votes"><%= post.upvotes - post.downvotes %></div>
+      <div class="downvote-button">\/</div>
+    </div>
+    <div class="thumbnail">thmb</div>
+    <div class="entry">
+      <p class="title">
+        <% if post.is_self_post %>
+          <%= link_to post.title, post %>
+        <% else %>
+          <%= link_to post.title, post.link %>
+        <% end %>
+      </p>
+      <p class="tagline">submitted <%= ((Time.now - post.created_at)/1.hours).round %> hours ago by <%= link_to post.user.username, post.user %></p>
+      <ul class="buttons">
+        <li><%= link_to "comments", post %></li>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+</div>

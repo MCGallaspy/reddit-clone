@@ -35,4 +35,11 @@ class CreateAndEditPostsTest < ActionDispatch::IntegrationTest
     @post = Post.order('created_at').last
     assert_redirected_to post_path @post
   end
+
+  # I don't want to stipulate too much how the posts should look at this point
+  # Hence the silly short test
+  test "displays index page of posts" do
+    get posts_path
+    assert_select "div[class=?]", "posts", count: 1
+  end
 end

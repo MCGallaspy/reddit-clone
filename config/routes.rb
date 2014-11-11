@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get     'login'             => 'users#new',         as: 'new_user'
   
   resources :comments
-  resources :posts
+  resources :posts do
+  end
  
   resources :users, except: [:new, :index], path: :user
 
