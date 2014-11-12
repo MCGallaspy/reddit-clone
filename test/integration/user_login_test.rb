@@ -25,8 +25,10 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_template 'layouts/application'
     assert_select "form[action=?]", login_path, count: 0
-    assert_select "a[href=?]", logout_path
-    assert_select "a[href=?]", user_path(@user)
+    assert_select "[class=?]", "user-nav" do
+      assert_select "a[href=?]", logout_path
+      assert_select "a[href=?]", user_path(@user)
+    end
     # Now logout
     delete logout_path
     assert_not is_logged_in?
@@ -35,8 +37,10 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     delete logout_path
     follow_redirect!
     assert_select "form[action=?]", login_path
-    assert_select "a[href=?]", logout_path,      count: 0
-    assert_select "a[href=?]", user_path(@user), count: 0
+    assert_select "[class=?]", "user-nav" do
+      assert_select "a[href=?]", logout_path,      count: 0
+      assert_select "a[href=?]", user_path(@user), count: 0
+    end
   end
 
   test "login with remembering" do
