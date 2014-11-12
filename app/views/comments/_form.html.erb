@@ -11,26 +11,14 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :parent_id, value: parent.id %>
+  <%= f.hidden_field :parent_type, value: (parent.is_a?(Post) ? "Post" : "Comment") %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  
   <div class="field">
-    <%= f.label :upvotes %><br>
-    <%= f.number_field :upvotes %>
-  </div>
-  <div class="field">
-    <%= f.label :downvotes %><br>
-    <%= f.number_field :downvotes %>
-  </div>
-  <div class="field">
-    <%= f.label :parent_id %><br>
-    <%= f.text_field :parent_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
     <%= f.text_area :content %>
   </div>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

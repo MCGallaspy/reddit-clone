@@ -1,39 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="post">
+  <div class="voted-on">
+    <div class="upvote-button">/\</div>
+    <div class="votes"><%= @post.upvotes - @post.downvotes %></div>
+    <div class="downvote-button">\/</div>
+  </div>
+  <div class="thumbnail">thmb</div>
+  <div class="entry">
+    <p class="title">
+      <% if @post.is_self_post %>
+        <%= link_to @post.title, @post %>
+      <% else %>
+        <%= link_to @post.title, @post.link %>
+      <% end %>
+    </p>
+    <p class="tagline">submitted <%= ((Time.now - @post.created_at)/1.hours).round %> hours ago by <%= link_to @post.user.username, @post.user %></p>
+    <ul class="buttons">
+      <li><%= link_to "comments", @post %></li>
+    </ul>
+  </div>
+</div>
 
-<p>
-  <strong>Upvotes:</strong>
-  <%= @post.upvotes %>
-</p>
+<div class="comment-area">
+  <div class="separator"></div>
+  <% if logged_in? %>
+    <%= render partial: 'comments/form', locals: {parent: @post} %>
+  <% end %>
 
-<p>
-  <strong>Downvotes:</strong>
-  <%= @post.downvotes %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user %>
-</p>
-
-<p>
-  <strong>Self text:</strong>
-  <%= @post.self_text %>
-</p>
-
-<p>
-  <strong>Link:</strong>
-  <%= @post.link %>
-</p>
-
-<p>
-  <strong>Is self post:</strong>
-  <%= @post.is_self_post %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+  <% @post.comments.each do |comment| %>
+    <%= render partial: 'comments/comment', locals: {comment: comment} %>
+  <% end %>
+</div>

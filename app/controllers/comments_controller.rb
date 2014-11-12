@@ -15,6 +15,8 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new
+    @parent = Comment.find(params[:comment_id]) unless params[:comment_id].nil?
+    @parent = Post.find(params[:post_id]) unless params[:post_id].nil?
   end
 
   # GET /comments/1/edit
@@ -69,6 +71,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:upvotes, :downvotes, :parent_id, :parent_type, :user_id, :content)
+      params.require(:comment).permit(:parent_id, :parent_type, :user_id, :content)
     end
 end

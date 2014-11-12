@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  root    'application#index'
+  root    'posts#index'
   post    'login'             => 'sessions#create'
   delete  'logout'            => 'sessions#destroy'
   get     'login'             => 'users#new',         as: 'new_user'
   
-  resources :comments
+  resources :comments do
+    resources :comments, shallow: true
+  end
   resources :posts do
+    resources :comments, shallow: true
   end
  
   resources :users, except: [:new, :index], path: :user

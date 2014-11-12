@@ -157,7 +157,29 @@ div.container {
 
 .post {
   height: 50px;
+}
 
+.comment {
+  clear: both;
+
+  .entry {
+    .content {
+      margin: 5px auto;
+      width: 100%;
+    }
+  }
+
+  .children {
+    float: none;
+    display: block;
+    .comment {
+      margin-left: 15px;
+      border-left: dotted 1px grey;
+    }
+  }
+}
+
+.post, .comment {
   span, div {
     float: left;
     display: block;
@@ -186,6 +208,7 @@ div.container {
       height: 14px;
       width: 15px;
       text-align: center;
+
     }
     .votes {
       height: 16px;
@@ -214,7 +237,30 @@ div.container {
       li {
         font-size: x-small;
         color: #888;
+        float: left;
+        margin-right: 10px;
       }
+    }
+  }
+}
+
+.comment-area {
+  margin: 20px auto 20px 20px;
+  .separator {
+    width: 100%;
+    border-bottom: dotted 1px black;
+  }
+  .new_comment {
+    .field {
+      margin: 5px 0px 5px 5px;
+      max-width: 500px;
+      textarea {
+        margin: 0px;
+      }
+    }
+    .actions {
+      margin: 5px 0px 5px 5px;
+      font-size: small;
     }
   }
 }
