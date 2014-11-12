@@ -1,19 +1,18 @@
-<div class="post">
+<div class="post full-view-post">
   <div class="voted-on">
-    <div class="upvote-button">/\</div>
-    <div class="votes"><%= @post.upvotes - @post.downvotes %></div>
-    <div class="downvote-button">\/</div>
+    <%= render partial: "votes/votes", locals: {votable: @post} %>
   </div>
   <div class="thumbnail">thmb</div>
   <div class="entry">
-    <p class="title">
       <% if @post.is_self_post %>
-        <%= link_to @post.title, @post %>
+        <p class="title"><%= link_to @post.title, @post %></p>
       <% else %>
-        <%= link_to @post.title, @post.link %>
+        <p class="title"><%= link_to @post.title, @post.link %></p>
       <% end %>
-    </p>
     <p class="tagline">submitted <%= ((Time.now - @post.created_at)/1.hours).round %> hours ago by <%= link_to @post.user.username, @post.user %></p>
+      <% if @post.is_self_post %>
+        <div class="self-text"><%= @post.self_text if @post.is_self_post %></div>
+      <% end %>
     <ul class="buttons">
       <li><%= link_to "comments", @post %></li>
     </ul>

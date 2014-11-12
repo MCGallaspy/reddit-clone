@@ -1,7 +1,6 @@
 <div class="comment">
   <div class="voted-on">
-    <div class="upvote-button">/\</div>
-    <div class="downvote-button">\/</div>
+    <%= render partial: "votes/votes_no_score", locals: {votable: comment} %>
   </div>
   <div class="entry">
     <p class="tagline"><%= link_to comment.user.username, comment.user %> <%= comment.upvotes - comment.downvotes %> points <%= ((Time.now - comment.created_at)/1.hours).round %> hours ago</p>

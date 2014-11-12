@@ -2,11 +2,7 @@
   <% @posts.each_with_index do |post, index| %>
   <div class="post">
     <span class="rank"><%= index+1 %></span>
-    <div class="voted-on">
-      <div class="upvote-button">/\</div>
-      <div class="votes"><%= post.upvotes - post.downvotes %></div>
-      <div class="downvote-button">\/</div>
-    </div>
+    <%= render partial: "votes/votes", locals: {votable: post} %>
     <div class="thumbnail">thmb</div>
     <div class="entry">
       <p class="title">

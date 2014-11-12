@@ -157,6 +157,21 @@ div.container {
 
 .post {
   height: 50px;
+
+  .entry {
+    .self-text {
+      margin: 5px auto;
+      width: 100%;
+      border: 1px solid grey;
+      border-radius: 4px;
+      padding: 4px;
+    }
+  }
+}
+
+.full-view-post {
+  overflow: auto;
+  height: auto;
 }
 
 .comment {
@@ -246,6 +261,7 @@ div.container {
 
 .comment-area {
   margin: 20px auto 20px 20px;
+  overflow: auto;
   .separator {
     width: 100%;
     border-bottom: dotted 1px black;

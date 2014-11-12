@@ -1,3 +1,5 @@
+* Prettify voting
+* Update vote counts on client side
 * Implement post and comment edit and delete
 * Add asynchronous client-side editing for comments and posts (no redirects!)
 * Add pagination for posts and comments
