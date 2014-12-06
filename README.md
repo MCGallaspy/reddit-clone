@@ -1,5 +1,7 @@
 A site to reproduce the functionality of reddit.com.
 
+Currently hosted at: https://mighty-reef-9440.herokuapp.com/
+
 It's so I can really dig deep into rails. I want to make this site using TDD,
 so I will write tests for all functionality before I write any code.
 
