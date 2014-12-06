@@ -1,7 +1,5 @@
 <div class="post full-view-post">
-  <div class="voted-on">
-    <%= render partial: "votes/votes", locals: {votable: @post} %>
-  </div>
+  <%= render partial: "votes/votes", locals: {votable: @post} %>
   <div class="thumbnail">thmb</div>
   <div class="entry">
       <% if @post.is_self_post %>
