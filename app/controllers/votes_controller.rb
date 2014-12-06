@@ -20,6 +20,9 @@ class VotesController < ApplicationController
     render text: ""
   end
 
+  def destroy
+  end
+
   private
     def verify_user?
       @user == current_user

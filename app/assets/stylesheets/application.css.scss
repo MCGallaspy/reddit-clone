@@ -20,6 +20,9 @@
 
 $flash-red: #FBE3E4;
 $flash-green: #E6EFC2;
+$orangered: #FF4500;
+$periwinkle: #CCAAFF;
+$darkgrey: #A9A9A9;
 
 body {
   margin: 0;
@@ -229,6 +232,10 @@ div.container {
       height: 16px;
       text-align: center;
     }
+
+    .after-upvote, .after-downvote, .before-vote {
+      display: none;
+    }
   }
 
   .thumbnail {
@@ -279,4 +286,16 @@ div.container {
       font-size: small;
     }
   }
+}
+
+.upvoted {
+  color: $orangered;
+}
+
+.downvoted {
+  color: $periwinkle;
+}
+
+.unvoted {
+  color: $darkgrey;
 }
