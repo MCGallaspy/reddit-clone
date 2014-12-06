@@ -226,15 +226,25 @@ div.container {
       height: 14px;
       width: 15px;
       text-align: center;
-
+      a {
+        color: $darkgrey;
+      }
     }
     .votes {
       height: 16px;
       text-align: center;
     }
-
     .after-upvote, .after-downvote, .before-vote {
       display: none;
+    }
+    .upvoted {
+      color: $orangered;
+    }
+    .downvoted {
+      color: $periwinkle;
+    }
+    .unvoted {
+      color: $darkgrey;
     }
   }
 
@@ -286,16 +296,4 @@ div.container {
       font-size: small;
     }
   }
-}
-
-.upvoted {
-  color: $orangered;
-}
-
-.downvoted {
-  color: $periwinkle;
-}
-
-.unvoted {
-  color: $darkgrey;
 }

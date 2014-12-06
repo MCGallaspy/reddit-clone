@@ -22,11 +22,17 @@ module VotesHelper
 
   def vote_count(votable)
     votable_type = votable.class.name
-    vote = Vote.find_by_votable_type_and_votable_id_and_user_id(votable_type, votable.id, current_user.id)
     
     before_vote_disp = "none"
     after_upvote_disp = "none"
     after_downvote_disp = "none"
+    
+    unless current_user.nil?
+      vote = Vote.find_by_votable_type_and_votable_id_and_user_id(votable_type, votable.id, current_user.id)
+    else
+      before_vote_disp = "block";
+    end
+
     if vote.nil?
       before_vote_disp = "block"
     elsif vote.is_upvote
