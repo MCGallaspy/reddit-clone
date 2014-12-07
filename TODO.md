@@ -1,4 +1,3 @@
-* Pushing vote button twice should delete vote
 * Implement post and comment edit and delete
 * Add asynchronous client-side editing for comments and posts (no redirects!)
 * Add pagination for posts and comments
