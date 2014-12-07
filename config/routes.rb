@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root    'posts#index'
   post    'login'             => 'sessions#create'
   delete  'logout'            => 'sessions#destroy'
-  get     'login'             => 'users#new',             as: 'new_user'
-  post    'vote'              => 'votes#new_or_create',   as: 'vote'
+  get     'login'             => 'users#new',               as: 'new_user'
+  post    'vote'              => 'votes#vote',              as: 'vote'
   
   resources :comments do
     resources :comments, shallow: true
