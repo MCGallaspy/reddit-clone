@@ -33,16 +33,26 @@ module VotesHelper
       before_vote_disp = "block";
     end
 
+
+    before_vote_count = votable.upvotes - votable.downvotes
+    after_upvote_count = votable.upvotes - votable.downvotes + 1
+    after_downvote_count = votable.upvotes - votable.downvotes - 1
     if vote.nil?
       before_vote_disp = "block"
     elsif vote.is_upvote
       after_upvote_disp = "block"
+      before_vote_count -= 1
+      after_upvote_count -= 1
+      after_downvote_count -= 1
     else
       after_downvote_disp = "block"
+      before_vote_count += 1
+      after_upvote_count += 1
+      after_downvote_count += 1
     end 
     
-    raw "<div style=\"display: #{before_vote_disp};\" class=\"votes before-vote\">#{votable.upvotes - votable.downvotes}</div>
-         <div style=\"display: #{after_upvote_disp};\" class=\"votes after-upvote\">#{votable.upvotes - votable.downvotes + 1}</div>
-         <div style=\"display: #{after_downvote_disp};\" class=\"votes after-downvote\">#{votable.upvotes - votable.downvotes - 1}</div>"
+    raw "<div style=\"display: #{before_vote_disp};\" class=\"votes before-vote\">#{before_vote_count}</div>
+         <div style=\"display: #{after_upvote_disp};\" class=\"votes after-upvote\">#{after_upvote_count}</div>
+         <div style=\"display: #{after_downvote_disp};\" class=\"votes after-downvote\">#{after_downvote_count}</div>"
   end
 end
